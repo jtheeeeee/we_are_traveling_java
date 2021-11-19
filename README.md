@@ -33,7 +33,7 @@ We are traveling의 약자이며 여행자들을 대상으로 서비스를 제�
 - Jpa
 - Mysql
 
-### 📌 SA [ - 상세보기]
+### 📌 SA [ - 상세보기](https://github.com/jtheeeeee/we_are_traveling_java/wiki/SA)
 
 ### 📌 기술 선택 이유 [ - 상세보기]
 
