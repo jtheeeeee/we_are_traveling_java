@@ -1,5 +1,5 @@
 ## 스파르타내일배움캠프 스프링 프로젝트(Weling)
-![Generic badge](https://img.shields.io/badge/SpringBoot-2.1.0-yellowgreen.svg) ![Generic badge](https://img.shields.io/badge/MySQL-8.0.27-green.svg) ![Generic badge](https://img.shields.io/badge/JPA-2.1-orange.svg) ![Generic badge](https://img.shields.io/badge/Flask-2.0.1-blue.svg)
+![Generic badge](https://img.shields.io/badge/SpringBoot-2.1.0-yellowgreen.svg) ![Generic badge](https://img.shields.io/badge/MySQL-8.0.27-green.svg) ![Generic badge](https://img.shields.io/badge/JPA-2.1-orange.svg) 
 
 ![logo](https://user-images.githubusercontent.com/37091602/142589111-f4b80b65-bf96-4e0c-aa3a-df7a124cb01f.png)
 
