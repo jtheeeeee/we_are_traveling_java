@@ -224,29 +224,70 @@
 
 
 </style>
+<script>
+    function signUp(){
+        let info = {
+            username: $("#username").val(),
+            password: $("#password").val(),
+            email: $("#email").val()
+        }
+        alert(username+"/"+email+"/"+ password);
+        $.ajax({
+            type: 'POST',
+            url: `/signup`,
+            contentType: "application/json",
+            data: JSON.stringify(info),
+            success: function (response) {
+                alert("회원가입이 완료되었습니다!!");
+                location.href = '/user/login';
+            }
+        })
+    }
+
+    function signIn(){
+        let info ={
+            username: $("#username_in").val(),
+            password:  $("#password_in").val()
+        }
+        alert(username + "/" + password);
+        $.ajax({
+            type: 'POST',
+            url: `/login`,
+            contentType: "application/json",
+            data: JSON.stringify(info),
+            success: function (response) {
+                localStorage.setItem("token", response['token']);
+                localStorage.setItem("username", response['username']);
+                alert("로그인이 되었습니다.")
+                location.href = '/';
+            }
+        })
+    }
+
+</script>
 <body>
 <div class="container right-panel-active">
     <!-- Sign Up -->
     <div class="container__form container--signup">
-        <form action="#" class="form" id="form1">
+        <div action="#" class="form" id="form1">
             <h2 class="form__title">Sign Up</h2>
-            <input type="text" placeholder="User" class="input" />
-            <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" />
-            <button class="btn">Sign Up</button>
-        </form>
+            <input type="text" id= "username"  placeholder="Username" class="input" />
+            <input type="email" id = "email" placeholder="Email" class="input" />
+            <input type="password" id="password" placeholder="Password" class="input" />
+            <button class="btn" onclick="signUp()">Sign Up</button>
+        </div>
     </div>
 
     <!-- Sign In -->
     <div class="container__form container--signin">
-        <form action="#" class="form" id="form2">
+        <div action="#" class="form" id="form2">
             <h2 class="form__title">Sign In</h2>
-            <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" />
+            <input type="text" id= "username_in"  placeholder="Username" class="input" />
+            <input type="password" id = "password_in" placeholder="Password" class="input" />
             <a href="#" class="link">Forgot your password?</a>
-            <button class="btn" onclick="location.href='index.html'">Sign In</button>
+            <button class="btn" onclick="signIn()">Sign In</button>
             <button class="btn" onclick="location.href='index.html'">with kakaotalk</button>
-        </form>
+        </div>
     </div>
 
     <!-- Overlay -->
