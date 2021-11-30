@@ -202,13 +202,37 @@
         color: #999999;
     }
 
+    #log-out {
+        display:none;
+    }
+
 </style>
 <script>
+    $(document).ready(function () {
+        if (localStorage.getItem("username")){
+            let username = localStorage.getItem("username");
+            $("#log-in").hide();
+            $("#log-out").show();
+            alert(username)
+        }else{
+            $("#log-in").show();
+            $("#log-out").hide();
+        }
+    });
+
+    function logout(){
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        location.href = '/';
+    }
+
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
         if(localStorage.getItem('token')) {
             jqXHR.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
         }
     });
+
+
 </script>
 <body>
 <div class="wrap">
@@ -225,7 +249,9 @@
                     <li><a href="https://diagnostic-chevre-17e.notion.site/f2f62d58bb9a4d659c2fc034e5c7a6b8">FAQ</a></li>
                     <li><a href="#">SEARCH</a></li>
                 </ul>
-                <button class="nav--button" onclick="location.href='/user/login'">Log-in</button>
+
+                <button class="nav--button" id="log-in" onclick="location.href='/user/login'">Log-in</button>
+                <button class="nav--button" id= "log-out" onclick="logout()">Log-out</button>
             </div>
         </container>
     </nav>
