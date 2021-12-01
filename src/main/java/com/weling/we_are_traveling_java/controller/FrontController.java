@@ -15,6 +15,11 @@ public class FrontController {
         return "insert";
     }
 
+    @GetMapping("/insert")
+    public String insert(){
+        return "insert_form";
+    }
+
 }
 
 

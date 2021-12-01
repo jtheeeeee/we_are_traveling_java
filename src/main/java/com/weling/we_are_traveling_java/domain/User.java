@@ -27,6 +27,7 @@ public class User extends Timestamped {
         this.role = role;
         this.kakaoId = kakaoId;
     }
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;

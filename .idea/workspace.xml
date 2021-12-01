@@ -5,15 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71e7845d-20f4-4818-ab0f-b1185cfd7d0c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/InfoContentApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/InfoContent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/dto/InfoContentRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/InfoContentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/InfoContentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sample.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/infoContent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/insert_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/FrontController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/FrontController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/FrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/FrontController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/insert.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +80,9 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -104,7 +120,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -114,6 +130,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.weling.we_are_traveling_java.domain" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\git\we_are_traveling_java\src\main\resources\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\32880\OneDrive\문서\GitHub\we_are_traveling_java\src\main\resources\static\music" />
@@ -250,5 +269,19 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/InfoContentApiController.java</url>
+          <line>21</line>
+          <properties class="com.weling.we_are_traveling_java.controller.InfoContentApiController" method="createInfoContent">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -28,15 +28,40 @@
         location.href = '/';
     }
 
-    function insert(){
-        window.location.herf="/insert";
-    }
 
     $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
         if (localStorage.getItem('token')) {
             jqXHR.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
         }
     });
+
+    function save(){
+        let username = localStorage.getItem("username");
+        let info ={
+            title: "제목",
+            content: "내용",
+            username: username,
+            accommodation: 1,
+            transportation: 2,
+            food: 3,
+            entertainment: 7,
+            shopping: 6,
+            others: 5,
+            total: 4
+
+        }
+        alert(info)
+        $.ajax({
+            type: 'POST',
+            url: `/infoContents`,
+            contentType: "application/json",
+            data: JSON.stringify(info),
+            success: function (response) {
+                alert("저장완료");
+                location.href = "/";
+            }
+        })
+    }
 
 
 </script>
@@ -273,8 +298,8 @@
             </container>
         </nav>
     </div>
-    <div id="content">
-        <button class="nav--button" id= "insert" onclick="location.href='/insert'">insert</button>
+    <div id="insert_form">
+        <button class="nav--button" id="contentSave" onclick="save()">save</button>
 
     </div>
 
