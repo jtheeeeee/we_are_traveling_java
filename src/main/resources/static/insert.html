@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        if(localStorage.getItem('token')) {
+            jqXHR.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
+        }
+    });
+
+</script>
+<body>
+<div>
+
+
+
+
+</div>
+</body>
+</html>
