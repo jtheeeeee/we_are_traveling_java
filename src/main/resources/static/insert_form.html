@@ -38,8 +38,8 @@
     function save(){
         let username = localStorage.getItem("username");
         let info ={
-            title: "제목",
-            content: "내용",
+            title: "제목2",
+            content: "내용2",
             username: username,
             accommodation: 1,
             transportation: 2,
@@ -57,8 +57,8 @@
             contentType: "application/json",
             data: JSON.stringify(info),
             success: function (response) {
-                alert("저장완료");
-                location.href = "/";
+                alert("저장완료" +response["id"]);
+                location.href = "/infoContent?id="+response['id'];
             }
         })
     }

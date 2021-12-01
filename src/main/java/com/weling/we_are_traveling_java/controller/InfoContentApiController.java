@@ -8,9 +8,7 @@ import com.weling.we_are_traveling_java.service.InfoContentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,5 +19,10 @@ public class InfoContentApiController {
     @PostMapping(value = "/infoContents")
     public InfoContent createInfoContent(@RequestBody InfoContentRequestDto infoDto) {
         return infoContentService.setInfoContent(infoDto);
+    }
+
+    @GetMapping(value = "/infoContents")
+    public InfoContent getInfoContent(@RequestParam Long id) {
+        return infoContentService.getInfoContent(id);
     }
 }
