@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+</head>
+<script>
+    let url =  new URL(document.URL);
+    let id = url.searchParams.get('id')
+    $(document).ready(function(){
+        makeInfo(id);
+    })
+
+
+
+    function makeInfo(id){
+        $.ajax({
+            type: 'GET',
+            url: `/infoContents?id=`+id,
+            contentType: "application/json",
+            success: function (response) {
+                let title = response["title"]
+                let content = response["content"]
+                let total =  response["total"]
+                let username =  response["username"]
+                let word = title+"/"+content+"/"+total+"/"+username
+                $("#content").html(word)
+            }
+        })
+
+    }
+</script>
+<body>
+infoContent
+<div id="content"></div>
+</body>
+</html>

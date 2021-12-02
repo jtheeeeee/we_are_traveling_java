@@ -10,6 +10,21 @@ public class FrontController {
         return "index";
     }
 
+    @GetMapping("/content")
+    public String content(){
+        return "insert";
+    }
+
+    @GetMapping("/insert")
+    public String insert(){
+        return "insert_form";
+    }
+
+    @GetMapping("/infoContent")
+    public String detail(){
+        return "infoContent";
+    }
+
 }
 
 
