@@ -1,9 +1,5 @@
 package com.weling.we_are_traveling_java.repository;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> taehee
 import com.weling.we_are_traveling_java.domain.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
