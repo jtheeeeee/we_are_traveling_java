@@ -8,6 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <script>
@@ -37,25 +41,41 @@
 
     function save(){
         let username = localStorage.getItem("username");
-        let info ={
-            title: "제목2",
-            content: "내용2",
-            username: username,
-            accommodation: 1,
-            transportation: 2,
-            food: 3,
-            entertainment: 7,
-            shopping: 6,
-            others: 5,
-            total: 4
+        var data = new FormData();
+        data.append( "title", $("#title").val() );
+        data.append( "content", $("#content").val() );
+        data.append( "username", username );
+        data.append( "image", $("#image")[0].files[0] );
+        if( typeof $("#image")[0].files[0] != 'undefined') data.append( "image", $("#image")[0].files[0] );
+        data.append("accommodation", $("#accommodation").val());
+        data.append("transportation",$("#transportation").val());
+        data.append("food",$("#food").val());
+        data.append("entertainment",$("#entertainment").val());
+        data.append("shopping", $("#shopping").val());
+        data.append("others", $("#others").val());
+        data.append("total",$("#total").val());
 
-        }
-        alert(info)
+        //
+        //
+        // let info ={
+        //     title: "제목2",
+        //     content: "내용2",
+        //     username: username,
+        //     accommodation: 1,
+        //     transportation: 2,
+        //     food: 3,
+        //     entertainment: 7,
+        //     shopping: 6,
+        //     others: 5,
+        //     total: 4
+        //
+        // }
         $.ajax({
             type: 'POST',
             url: `/infoContents`,
-            contentType: "application/json",
-            data: JSON.stringify(info),
+            processData: false,
+            contentType: false,
+            data: data,
             success: function (response) {
                 alert("저장완료" +response["id"]);
                 location.href = "/infoContent?id="+response['id'];
@@ -273,6 +293,35 @@
         display: none;
     }
 
+    #insert_content{
+        width: 55%;
+        height: fit-content;
+        margin:auto;
+        border: gray solid 0.01px;
+        border-radius: 0.01px;
+    }
+    #button {
+        width: 55%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        height: fit-content;
+
+    }
+    #budget{
+        width:20%;
+    }
+    #content{
+        width:100%;
+        height: 6.25em;
+        resize: none;
+    }
+
+    .table_file{border:2px solid black;  width: 30%; height:100%; margin-top: 10px; margin-bottom: 10px; }
+    .table_file_img{width: 100%; height:100%;  }
+    .table_file_input{display: block; margin-bottom: 5px;}
+
+
 </style>
 <body>
 <div id="wrap">
@@ -299,11 +348,103 @@
         </nav>
     </div>
     <div id="insert_form">
-        <button class="nav--button" id="contentSave" onclick="save()">save</button>
+        <div id="insert_content">
+            <hr>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
+                </div>
 
+                <input type="text" id="title" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <hr>
+            <div class="table_file" >
+                <img class="table_file_img" id="preview-image"
+                     src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+            </div>
+            <div id="file"><input class="table_file_input" type="file" id="image" name="image"></div>
+            <hr>
+            <p>Budget</p>
+            <div id="budget">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">숙박</span>
+                    </div>
+                    <input type="text" id="accommodation" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">교툥</span>
+                    </div>
+                    <input type="text" id="transportation" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">식비</span>
+                    </div>
+                    <input type="text" id="food" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">관광</span>
+                    </div>
+                    <input type="text" id="entertainment" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">쇼핑</span>
+                    </div>
+                    <input type="text" id="shopping" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">기타</span>
+                    </div>
+                    <input type="text" id="others" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">합계</span>
+                    </div>
+                    <input type="text" id="total" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+            <hr>
+            <p>content</p>
+            <div>
+                <textarea id="content"></textarea>
+            </div>
+
+
+        </div>
+        <div id="button">
+            <button class="nav--button" id="contentSave" onclick="save()">save</button>
+        </div>
     </div>
-
-
 </div>
 </body>
+<script>
+    function readImage(input) {
+        // 인풋 태그에 파일이 있는 경우
+        if (input.files && input.files[0]) {
+            // 이미지 파일인지 검사 (생략)
+            // FileReader 인스턴스 생성
+            const reader = new FileReader()
+            // 이미지가 로드가 된 경우
+            reader.onload = e => {
+                const previewImage = document.getElementById("preview-image")
+                previewImage.src = e.target.result
+            }
+            // reader가 이미지 읽도록 하기
+            reader.readAsDataURL(input.files[0])
+        }
+    }
+
+    const inputImage = document.getElementById("image")
+    inputImage.addEventListener("change", e => {
+        readImage(e.target)
+    })
+</script>
 </html>

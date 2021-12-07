@@ -9,10 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Setter
 @Getter // get 함수를 자동 생성합니다.
@@ -20,21 +17,8 @@ import java.time.format.DateTimeFormatter;
 @EntityListeners(AuditingEntityListener.class) // 변경되었을 때 자동으로 기록합니다.
 public abstract class Timestamped {
     @CreatedDate // 최초 생성 시점
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate // 마지막 변경 시점
-    private String modifiedAt;
-
-
-    //등록일자 형식 변경!!
-    @PrePersist
-    public void onPrePersist(){
-        this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
-        this.modifiedAt = this.createdAt;
-    }
-
-    @PreUpdate
-    public void onPreUpdate(){
-        this.modifiedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
-    }
+    private LocalDateTime modifiedAt;
 }

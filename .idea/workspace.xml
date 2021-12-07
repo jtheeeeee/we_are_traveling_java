@@ -4,29 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71e7845d-20f4-4818-ab0f-b1185cfd7d0c" name="Changes" comment="">
+    <list default="true" id="71e7845d-20f4-4818-ab0f-b1185cfd7d0c" name="Changes" comment="- insert_form.html 수정&#10;- s3연동 ( AmazonS3Config, AwsService, S3Uploder, application.properties)&#10;- InfoContent 저장 api 작성&#10;- InfoContent 조회 api 작성">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/config/AmazonS3Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/AwsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/S3Uploader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/WeAreTravelingJavaApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/WeAreTravelingJavaApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/InfoContentApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/InfoContentApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/domain/InfoContent.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/domain/InfoContent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/dto/InfoContentRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/dto/InfoContentRequestDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/service/InfoContentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/service/InfoContentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/infoContent.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/infoContent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/insert_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/insert_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/FrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/FrontController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/TagRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/WeAreTravelingJavaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/WeAreTravelingJavaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/InfoContentApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/InfoContentApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/InfoContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/domain/InfoContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/dto/InfoContentRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/dto/InfoContentRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/InfoContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/service/InfoContentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/board.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/board_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/board_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/infoContent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/infoContent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/insert_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/insert_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +63,21 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="we_are_traveling_java" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="we_are_traveling_java" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="we_are_traveling_java" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="we_are_traveling_java" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -61,11 +88,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -73,18 +99,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
-        <entry key="JPA Inspector" value="true" />
-        <entry key="JPA Palette" value="true" />
         <entry key="JPA Structure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="JPA Inspector" value="true" />
-        <entry key="JPA Palette" value="true" />
         <entry key="JPA Structure" value="false" />
       </map>
     </option>
@@ -111,17 +141,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../timeattacka/weeklytest-spring" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -131,62 +157,31 @@
       <recent name="C:\Users\user\Desktop\git\we_are_traveling_java\src\main\resources\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\hyerin\Desktop\we_are_traveling_java\src\main\resources\static" />
       <recent name="C:\Users\32880\OneDrive\문서\GitHub\we_are_traveling_java\src\main\resources\static\music" />
       <recent name="C:\Users\user\Desktop\git\we_are_traveling_java\src\main\resources\static\css" />
       <recent name="C:\Users\user\Desktop\git\we_are_traveling_java\src\main\resources\static" />
       <recent name="C:\Users\user\Desktop\git\we_are_traveling_java\src\main\resources\css" />
+      <recent name="C:\Users\32880\OneDrive\문서\GitHub\we_are_traveling_java\src\main\resources" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.weling.we_are_traveling_java.dto" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="gradle " />
-      <command value="gradle import" />
-    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.WeAreTravelingJavaApplication">
-    <configuration name="C:/Users/hyerin/Desktop/we_are_traveling_java [import]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="WeAreTravelingJavaApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--tests &quot;com.weling.we_are_traveling_java.WeAreTravelingJavaApplicationTests&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="import" />
+            <option value=":test" />
           </list>
         </option>
-        <option name="vmOptions" value="" />
+        <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="C:/Users/hyerin/Desktop/we_are_traveling_java" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -212,21 +207,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="we_are_traveling_java [import]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="we_are_traveling_java [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="import" />
+            <option value="test" />
           </list>
         </option>
-        <option name="vmOptions" value="" />
+        <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
@@ -252,18 +247,16 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.we_are_traveling_java [dependencies]" />
-      <item itemvalue="Gradle.C:/Users/hyerin/Desktop/we_are_traveling_java [import]" />
-      <item itemvalue="Gradle.C:/Users/hyerin/Desktop/we_are_traveling_java" />
+      <item itemvalue="Gradle.we_are_traveling_java [test]" />
+      <item itemvalue="Gradle.WeAreTravelingJavaApplicationTests" />
       <item itemvalue="Spring Boot.WeAreTravelingJavaApplication" />
-      <item itemvalue="Gradle.we_are_traveling_java [import]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.WeAreTravelingJavaApplication" />
-        <item itemvalue="Gradle.we_are_traveling_java [import]" />
+        <item itemvalue="Gradle.WeAreTravelingJavaApplicationTests" />
         <item itemvalue="Gradle.we_are_traveling_java [dependencies]" />
-        <item itemvalue="Gradle.C:/Users/hyerin/Desktop/we_are_traveling_java" />
-        <item itemvalue="Gradle.C:/Users/hyerin/Desktop/we_are_traveling_java [import]" />
+        <item itemvalue="Gradle.we_are_traveling_java [test]" />
       </list>
     </recent_temporary>
   </component>
@@ -281,11 +274,10 @@
       <workItem from="1637819835466" duration="5972000" />
       <workItem from="1637908690853" duration="1630000" />
       <workItem from="1638187074342" duration="17261000" />
-      <workItem from="1638409300518" duration="2060000" />
-      <workItem from="1638789536378" duration="5332000" />
-      <workItem from="1638818688536" duration="6381000" />
-      <workItem from="1638884613656" duration="166000" />
-      <workItem from="1638884960191" duration="1432000" />
+      <workItem from="1638702858805" duration="541000" />
+      <workItem from="1638749874990" duration="22074000" />
+      <workItem from="1638854556378" duration="1918000" />
+      <workItem from="1638873801034" duration="7783000" />
     </task>
     <servers />
   </component>
@@ -303,5 +295,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- insert_form.html 수정&#10;- s3연동 ( AmazonS3Config, AwsService, S3Uploder, application.properties)&#10;- InfoContent 저장 api 작성&#10;- InfoContent 조회 api 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="- insert_form.html 수정&#10;- s3연동 ( AmazonS3Config, AwsService, S3Uploder, application.properties)&#10;- InfoContent 저장 api 작성&#10;- InfoContent 조회 api 작성" />
   </component>
 </project>
