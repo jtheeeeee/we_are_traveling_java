@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -29,6 +30,25 @@ public class InfoContent extends Timestamped{
 
     }
 
+    public InfoContent(InfoContentRequestDto infoDto, String imageUrl){
+        this.username = infoDto.getUsername();
+        this.title = infoDto.getTitle();
+        this.imageUrl = imageUrl;
+        this.accommodation = infoDto.getAccommodation();
+        this.transportation = infoDto.getTransportation();
+        this.food = infoDto.getFood();
+        this.content = infoDto.getContent();
+        this.entertainment = infoDto.getEntertainment();
+        this.others = infoDto.getOthers();
+        this.shopping = infoDto.getShopping();
+        this.total = infoDto.getTotal();
+
+
+    }
+
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -39,6 +59,8 @@ public class InfoContent extends Timestamped{
     private String title;
     @Column( nullable = false)
     private String content;
+    @Column(nullable = true)
+    private String imageUrl;
     @Column( nullable = false)
     private int accommodation;
     @Column( nullable = false)
