@@ -1,17 +1,19 @@
 package com.weling.we_are_traveling_java.service;
 
 import com.weling.we_are_traveling_java.domain.Board;
+import com.weling.we_are_traveling_java.domain.Comment;
+import com.weling.we_are_traveling_java.domain.Tag;
 import com.weling.we_are_traveling_java.dto.BoardCommentRequestDto;
 import com.weling.we_are_traveling_java.dto.BoardRequestDto;
 import com.weling.we_are_traveling_java.repository.BoardRepository;
 import com.weling.we_are_traveling_java.repository.CommentRepository;
 import com.weling.we_are_traveling_java.repository.TagRepository;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.security.krb5.internal.ccache.Tag;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.xml.stream.events.Comment;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -34,8 +36,8 @@ public class BoardService {
         boardRepository.save(board);
 
         List<String> items = Arrays.asList(boardRequestDto.getTags().split("\\s*,\\s*"));
-//        List<Tag> tags = items.stream().map(tag -> new Tag(tag, board)).collect(Collectors.toList());
-//        tagRepository.saveAll(tags);
+        List<Tag> tags = items.stream().map(tag -> new Tag(tag, board)).collect(Collectors.toList());
+        tagRepository.saveAll(tags);
 
         return board;
     }
@@ -59,8 +61,8 @@ public class BoardService {
         Board board = boardRepository.findById(boardCommentRequestDto.getIdx()).orElseThrow(
                 () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
         );
-//        Comment comment = new Comment(boardCommentRequestDto, board);
-//        commentRepository.save(comment);
+        Comment comment = new Comment(boardCommentRequestDto, board);
+        commentRepository.save(comment);
     }
 
 }
