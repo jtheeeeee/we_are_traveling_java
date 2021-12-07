@@ -76,7 +76,7 @@ public class InfoContent extends Timestamped{
     @Column( nullable = false)
     private int total;
     @OneToMany(mappedBy="infoContent")
-    private List<Comment> comments;
+    private List<InfoComment> comments;
 
 
 

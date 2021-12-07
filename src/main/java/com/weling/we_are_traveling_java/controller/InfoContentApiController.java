@@ -1,7 +1,7 @@
 package com.weling.we_are_traveling_java.controller;
 
 import com.weling.we_are_traveling_java.domain.InfoContent;
-import com.weling.we_are_traveling_java.dto.CommentRequestDto;
+import com.weling.we_are_traveling_java.dto.InfoCommentRequestDto;
 import com.weling.we_are_traveling_java.dto.InfoContentRequestDto;
 import com.weling.we_are_traveling_java.service.InfoContentService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class InfoContentApiController {
     }
 
     @PostMapping("/infoContents/comment")
-    public void  setArticleComment(@RequestBody CommentRequestDto commentRequestDto){
+    public void  setArticleComment(@RequestBody InfoCommentRequestDto commentRequestDto){
         infoContentService.setComment(commentRequestDto);
     }
 
