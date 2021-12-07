@@ -28,6 +28,7 @@
                 let content = response["content"]
                 let total =  response["total"]
                 let username =  response["username"]
+                $("#image").attr("src",response['imageUrl']);
                 let word = title+"/"+content+"/"+total+"/"+username
                 $("#content").html(word)
             }
@@ -38,5 +39,6 @@
 <body>
 infoContent
 <div id="content"></div>
+<img id="image"/>
 </body>
 </html>
