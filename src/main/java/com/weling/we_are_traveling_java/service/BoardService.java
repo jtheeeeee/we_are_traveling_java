@@ -8,9 +8,11 @@ import com.weling.we_are_traveling_java.dto.BoardRequestDto;
 import com.weling.we_are_traveling_java.repository.BoardRepository;
 import com.weling.we_are_traveling_java.repository.CommentRepository;
 import com.weling.we_are_traveling_java.repository.TagRepository;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Arrays;
