@@ -74,6 +74,4 @@ public class AwsService {
             log.error(e.getMessage());
         }
     }
-
-
 }

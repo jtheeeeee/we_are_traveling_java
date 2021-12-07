@@ -25,6 +25,14 @@ public class FrontController {
         return "infoContent";
     }
 
+    @GetMapping("/board")
+    public String board(){ return "board";
+    }
+
+    @GetMapping("/board_insert")
+    public String board_insert(){
+        return "board_insert";
+    }
 }
 
 

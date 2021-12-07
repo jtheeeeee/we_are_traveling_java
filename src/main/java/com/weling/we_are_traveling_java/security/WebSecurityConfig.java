@@ -29,6 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
         http.authorizeRequests()
+                .antMatchers("/board/**").permitAll()
+                .antMatchers("/board_insert").permitAll()
+                .antMatchers("/view/**").permitAll()
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/user/**").permitAll()
