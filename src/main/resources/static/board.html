@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+
+    <title>COMMUNITY</title>
+    <style type="text/css">
+        * {
+            font-family: "Stylish", sans-serif;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            getBoards();
+        });
+
+        function getBoards() {
+            let tag = $("#searchTag").val();
+            $.ajax({
+                type: "GET",
+                url: `/boards?searchTag=${tag}`,
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $("#list-post").empty();
+                    for (let i = 0; i < response.length; i++) {
+                        num = response.length - i;
+                        makeListPost(response[i], num);
+                    }
+                }
+            })
+        }
+
+        function makeListPost(board, index) {
+            let tags = '';
+            for (let i = 0; i < board['tags'].length; i++) {
+                console.log(board['tags'][i]);
+                tags += " #" + board['tags'][i]['name'];
+            }
+
+            let tempHtml = ` <tr>
+                      <th scope="row">${board}</th>
+                      <td><a href="view.html?idx=${board['idx']}">${board['title']}</td>
+                      <td>${board['comments'].length}</td>
+                      <td>${tags}</td>
+                      <td>${board['createdAt']}</td>
+                      </tr>
+                    `;
+            $("#list-post").append(tempHtml);
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <h1 class="display-4">COMMUNITY</h1>
+    <hr class="my-4">
+    <div class="input-group mb-3" style="width: 30%; float: right">
+        <input type="text" class="form-control" placeholder="Tag" aria-label="태그" aria-describedby="basic-addon2"
+               id="searchTag">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary " type="button" onclick="getBoards()">Search</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody id="list-post">
+        </tbody>
+    </table>
+
+    <p class="lead">
+        <button onclick="location.href='/board_insert'"
+                style="float: right; width: 10%; color:white; border-radius:3px; font-size:20px; background-color: #333333">
+            글 쓰기
+        </button>
+    </p>
+</div>
+
+</body>
+</html>
