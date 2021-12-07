@@ -14,13 +14,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/static/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/board.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/board_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/board_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/bootstrap-tagsinput.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/board.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/board_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/board_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap-tagsinput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap-tagsinput.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
