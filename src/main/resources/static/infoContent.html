@@ -7,38 +7,111 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <script>
     let url =  new URL(document.URL);
+    let idx = '';
+    let username =localStorage.getItem("username");
     let id = url.searchParams.get('id')
     $(document).ready(function(){
-        makeInfo(id);
+        makeInfo();
+        idx = getParam('id');
+
     })
 
+    function getParam(name) {
+        var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    function setComment(){
+        let comment = {
+            "id":idx,
+            "username":username,
+            "comment":$("#comment").val()
+        }
+        alert(idx+username+$("#comment").val())
+        $.ajax({
+            type: "POST",
+            url: `/infoContents/comment`,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(comment),
+            success: function (response) {
+                alert("댓글이 작성되었습니다!!");
+                $("#comment").val("");
+                makeInfo();
+            }
+        })
+    }
 
 
-    function makeInfo(id){
+    function makeInfo(){
         $.ajax({
             type: 'GET',
-            url: `/infoContents?id=`+id,
+            url: `/infoContents?id=${id}`,
             contentType: "application/json",
             success: function (response) {
                 let title = response["title"]
                 let content = response["content"]
+                let accommodation = response["accommodation"]
+                let transportation = response["transportation"]
+                let food = response["food"]
+                let entertainment = response["entertainment"]
+                let shopping = response["shopping"]
+                let others = response["others"]
                 let total =  response["total"]
                 let username =  response["username"]
+                let budget = accommodation +"/"+transportation+"/"+food+"/"+entertainment+"/"+shopping+"/"+others+"/"+total
+                $("#username").html(username);
                 $("#image").attr("src",response['imageUrl']);
-                let word = title+"/"+content+"/"+total+"/"+username
-                $("#content").html(word)
+                $("#title").html(title);
+                $("#content").html(content)
+                $("#budget").html(budget)
+                $("#comment-list").empty();
+                for (let i = 0; i < response['comments'].length; i++) {
+                    makeListComment(response['comments'][i])
+                }
             }
         })
-
+    }
+    function makeListComment(comment) {
+        let tempHtml = `<div>${comment["username"]}</div><li class="list-group-item">${comment['comment']}</li>`;
+        $("#comment-list").append(tempHtml);
     }
 </script>
 <body>
-infoContent
-<div id="content"></div>
+<div class="form-group">
+    <label for="username"></label>
+    <div id="username"></div>
+</div>
+<div class="form-group">
+    <label for="title"></label>
+    <div id="title"></div>
+</div>
+<div class="form-group">
+    <label for="content"></label>
+    <div id="content"></div>
+</div>
+<div class="form-group">
+    <label for="budget"></label>
+    <div id="budget"></div>
+</div>
+<hr/>
 <img id="image"/>
+<div>
+    <p>Comment</p>
+    <textarea class="form-control" id="comment" rows="3"></textarea>
+    <button type="button" class="btn btn-primary" onclick="setComment()">댓글작성</button>
+</div>
+<div id="comment_list">
+    <hr/>
+    <ul class="list-group" id="comment-list"></ul>
+</div>
+
 </body>
 </html>
