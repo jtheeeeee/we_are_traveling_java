@@ -24,8 +24,9 @@
     <!-- 구글폰트 -->
 
     <!-- 태그 -->
-    <link rel="stylesheet" href="bootstrap-tagsinput.css">
-    <script src="bootstrap-tagsinput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <script src="/static/bootstrap-tagsinput.js"></script>
 
     <title>글쓰기</title>
     <style type="text/css">
@@ -86,7 +87,6 @@
     </style>
     <script>
         $(document).ready(function () {
-            getBoards();
         });
 
         function postingBoard() {

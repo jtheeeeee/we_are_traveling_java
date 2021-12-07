@@ -23,6 +23,10 @@
 
     <!-- 구글폰트 -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <link rel="stylesheet" href="bootstrap-tagsinput.css">
+    <script src="bootstrap-tagsinput.js"></script>
+
     <title>COMMUNITY</title>
     <style type="text/css">
         * {
@@ -63,8 +67,7 @@
             }
 
             let tempHtml = ` <tr>
-                      <th scope="row">${board}</th>
-                      <td><a href="view.html?idx=${board['idx']}">${board['title']}</td>
+                      <td>${board['title']}</td>
                       <td>${board['comments'].length}</td>
                       <td>${tags}</td>
                       <td>${board['createdAt']}</td>
@@ -88,7 +91,6 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"></th>
             <th scope="col">Title</th>
             <th scope="col">Comments</th>
             <th scope="col">Tag</th>
