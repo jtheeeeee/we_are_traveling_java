@@ -29,7 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
         http.authorizeRequests()
-                .antMatchers("/board/**").permitAll()
+                .antMatchers("/board").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/boards/**").permitAll()
+                .antMatchers("/view/**").permitAll()
                 .antMatchers("/board_insert").permitAll()
                 .antMatchers("/view/**").permitAll()
                 .antMatchers("/images/**").permitAll()
@@ -68,6 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/user/forbidden");
+
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
