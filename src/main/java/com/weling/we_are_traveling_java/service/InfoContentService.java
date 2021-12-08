@@ -42,6 +42,11 @@ public class InfoContentService {
 
     }
 
+    public void deleteInfoContent(Long id){
+        InfoContent infoContent = infoContentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
+        infoContentRepository.delete(infoContent);
+    }
+
     @Transactional
     public void setComment(InfoCommentRequestDto commentRequestDto){
         InfoContent infoContent = infoContentRepository.findById(commentRequestDto.getId()).orElseThrow(
