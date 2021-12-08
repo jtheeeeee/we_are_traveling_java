@@ -34,7 +34,7 @@ public class InfoContentService {
 
     public InfoContent getInfoContent(Long id){
         return infoContentRepository.findById(id).orElseThrow(
-                    () -> new NullPointerException("해당 아이디가 존재하지 않습니다." ));
+                () -> new NullPointerException("해당 아이디가 존재하지 않습니다." ));
     }
 
     public List<InfoContent> getInfoContents(){

@@ -8,10 +8,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <script>
     $(document).ready(function () {
+        getInfoContents();
         if (localStorage.getItem("username")) {
             let username = localStorage.getItem("username");
             $("#log-in").hide();
@@ -28,15 +33,60 @@
         location.href = '/';
     }
 
-    function insert(){
-        window.location.herf="/insert";
-    }
 
     $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
         if (localStorage.getItem('token')) {
             jqXHR.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
         }
     });
+    function getInfoContents(){
+        $.ajax({
+            type: "GET",
+            url: `/infoContentList`,
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("#imgList").empty();
+                for (let i = 0; i < response.length; i++) {
+                    makeListPost(response[i]);
+                }
+                // console.log(response[0]["imageUrl"]);
+                // igm=response[0]["imageUrl"]
+                // temp=`<li>
+                //             <figure class="snip">
+                //                 <a href="javascript:void(0);" onclick="update();">
+                //                     <figcaption>
+                //                         <p>줴목</p>
+                //                     </figcaption>
+                //                     <a href='/infoContent?id=${response[0]['id']}'>
+                //                         <img src=${igm}
+                //                              alt="여행장소"/></a>
+                //                 </a>
+                //             </figure>
+                //         </li>`
+                //
+                //
+                // console.log(response[1]);
+                // console.log(response[2]);
+            }
+        })
+    }
+
+    function makeListPost(info) {
+        let temp=`<li>
+                            <figure class="snip">
+                                <a href="javascript:void(0);" onclick="update();">
+                                    <figcaption>
+                                        <p>${info["title"]}</p>
+                                    </figcaption>
+                                    <a href='/infoContent?id=${info['id']}'>
+                                        <img src=${info["imageUrl"]}
+                                             alt="여행장소"/></a>
+                                </a>
+                            </figure>
+                        </li>`
+        $('#imglist').append(temp);
+
+    }
 
 
 </script>
@@ -258,6 +308,96 @@
 
     }
 
+
+    /*영역 전체*/
+    /*body {*/
+    /*    font-family: 'Noto Sans KR', sans-serif;*/
+    /*    display: flex;*/
+    /*    align-content: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+
+    #wrapper {
+        width: 100%;
+        overflow: hidden;
+        margin: auto;
+    }
+
+
+    #filter .simple-filter {
+        margin: 0 30px;
+    }
+
+    #filter .simple-filter ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #filter .simple-filter ul li {
+        position: relative;
+        width: calc((100% - 40px) / 4);
+        margin: 5px;
+        overflow: hidden;
+        border-radius: 10px;
+        text-align: center;
+        background: black;
+    }
+
+    #filter .simple-filter ul li::after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    #filter .simple-filter ul li > figure.snip a > figcaption p {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        opacity: 0;
+        font-size: 3.0vw;
+    }
+
+    #filter .simple-filter ul li:hover > figure.snip a > figcaption p {
+        opacity: 1;
+        transition-delay: 0.35s;
+        color: white
+    }
+
+    #filter .simple-filter ul li > figure.snip a > img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        transition: all 0.45s ease-in-out;
+        opacity: 0.7;
+    }
+
+    #filter .simple-filter ul li:hover > figure.snip a > img {
+        opacity: 0.25;
+        transform: scale(1.05) translate(-50%, -50%);
+    }
+
+    #filter .simple-filter > .page {
+        color: black;
+        font: bold 3.0vw tahoma;
+        margin-bottom: 15px;
+        text-align: center;
+        letter-spacing: 8px
+    }
+
+    #filter .simple-filter > .page a:hover {
+        color: black;
+        border: 1px solid pink;
+        background-color: pink;
+        text-decoration: none;
+    }
+
+
 </style>
 <body>
 <div id="wrap">
@@ -286,6 +426,20 @@
 
     <div id="button">
         <button class="nav--button" id= "insert" onclick="location.href='/insert'">insert</button>
+    </div>
+    <div id="wrapper">
+        <main id="main">
+            <section id="filter">
+                <div class="simple-filter">
+                    <!--이미지 리스트 출력-->
+                    <ul id='imglist'>
+                        <!-- 게시물 순서대로 번호 부여하기 -->
+
+                    </ul>
+                </div>
+            </section>
+        </main>
+
     </div>
 
 
