@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,6 +24,17 @@ public class InfoContentApiController {
     @GetMapping(value = "/infoContents")
     public InfoContent getInfoContent(@RequestParam Long id) {
         return infoContentService.getInfoContent(id);
+    }
+
+    @GetMapping(value = "/infoContentList")
+    public List<InfoContent> getInfoContents() {
+        return infoContentService.getInfoContents();
+    }
+
+    @DeleteMapping(value = "/infoContents")
+    public Long deleteInfoContent(@RequestParam Long id) {
+        infoContentService.deleteInfoContent(id);
+        return id;
     }
 
     @PostMapping("/infoContents/comment")
