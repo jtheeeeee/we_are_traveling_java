@@ -42,4 +42,9 @@ public class InfoContentApiController {
         infoContentService.setComment(commentRequestDto);
     }
 
+    @DeleteMapping("/infoContents/comment")
+    public Long  deleteArticleComment(@RequestParam Long id){
+        infoContentService.deleteComment(id);
+        return id;
+    }
 }
