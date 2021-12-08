@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -34,6 +35,11 @@ public class InfoContentService {
     public InfoContent getInfoContent(Long id){
         return infoContentRepository.findById(id).orElseThrow(
                     () -> new NullPointerException("해당 아이디가 존재하지 않습니다." ));
+    }
+
+    public List<InfoContent> getInfoContents(){
+        return infoContentRepository.findAll();
+
     }
 
     @Transactional
