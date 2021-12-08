@@ -12,11 +12,26 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/repository/UserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/kakao/KakaoOAuth2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/security/kakao/KakaoOAuth2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/service/InfoContentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/weling/we_are_traveling_java/service/InfoContentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/static/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/board.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/insert_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/insert_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/kakao/KakaoOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/weling/we_are_traveling_java/security/kakao/KakaoOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/board.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/insert_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/insert_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,8 +110,8 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="JPA Inspector" value="true" />
-        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Inspector" value="false" />
+        <entry key="JPA Palette" value="false" />
         <entry key="JPA Structure" value="false" />
       </map>
     </option>
@@ -123,7 +138,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../바탕 화면/we_are_traveling_java/we_are_traveling_java" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -269,6 +284,7 @@
       <workItem from="1638749874990" duration="22074000" />
       <workItem from="1638854556378" duration="1918000" />
       <workItem from="1638873801034" duration="7783000" />
+      <workItem from="1638922491321" duration="7413000" />
     </task>
     <servers />
   </component>
@@ -290,5 +306,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- insert_form.html 수정&#10;- s3연동 ( AmazonS3Config, AwsService, S3Uploder, application.properties)&#10;- InfoContent 저장 api 작성&#10;- InfoContent 조회 api 작성" />
     <option name="LAST_COMMIT_MESSAGE" value="- insert_form.html 수정&#10;- s3연동 ( AmazonS3Config, AwsService, S3Uploder, application.properties)&#10;- InfoContent 저장 api 작성&#10;- InfoContent 조회 api 작성" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.web.client.HttpClientErrorException$Unauthorized" package="org.springframework.web.client" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
