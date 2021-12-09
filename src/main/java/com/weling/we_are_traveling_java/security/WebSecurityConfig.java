@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/boards/**").permitAll()
-                .antMatchers("/view/**").permitAll()
+                .antMatchers("/view").permitAll()
                 .antMatchers("/board_insert").permitAll()
                 .antMatchers("/view/**").permitAll()
                 .antMatchers("/images/**").permitAll()

@@ -56,6 +56,10 @@
             url: `/infoContents?id=${id}`,
             contentType: "application/json",
             success: function (response) {
+                let username =  response["username"]
+                if (username == localStorage.getItem("username")){
+                    $("#delete-button").show();
+                }
                 let title = response["title"]
                 let content = response["content"]
                 let accommodation = response["accommodation"]
@@ -65,7 +69,7 @@
                 let shopping = response["shopping"]
                 let others = response["others"]
                 let total =  response["total"]
-                let username =  response["username"]
+
                 let budget = accommodation +"/"+transportation+"/"+food+"/"+entertainment+"/"+shopping+"/"+others+"/"+total
                 $("#username").html(username);
                 $("#image").attr("src",response['imageUrl']);
@@ -80,10 +84,68 @@
         })
     }
     function makeListComment(comment) {
+
+        let temp =`<div id="userinfo">
+        <div>${comment["username"]}</div>
+
+    </div>
+    <li class="list-group-item">${comment['comment']}</li>`
+        if(comment['username']==localStorage.getItem("username")){
+            temp=`<div id="userinfo">
+        <div>${comment["username"]}</div>
+        <button type="button" id="delete-button-comment" class="btn btn-primary" onclick="delete_comment(${comment["id"]})">삭제</button>
+    </div>
+    <li class="list-group-item">${comment['comment']}</li>`
+        }
+
+        $("#comment-list").append(temp);
+
+
+
         let tempHtml = `<div>${comment["username"]}</div><li class="list-group-item">${comment['comment']}</li>`;
-        $("#comment-list").append(tempHtml);
+
+    }
+
+    function delete_content(){
+        $.ajax({
+            type: "DELETE",
+            url: `/infoContents?id=${id}`,
+            contentType: 'application/json; charset=utf-8',
+            data: {id:id},
+            success: function (response) {
+                alert("삭제되었습니다.");
+                window.location = "/content";
+            }
+        })
+    }
+
+    function delete_comment(id){
+        $.ajax({
+            type: "DELETE",
+            url: `/infoContents/comment?id=${id}`,
+            contentType: 'application/json; charset=utf-8',
+            data: {id:id},
+            success: function (response) {
+                alert("삭제되었습니다.");
+                location.reload();
+            }
+        })
+
     }
 </script>
+<style>
+    #delete-button{
+        display:none;
+    }
+    /*#delete-button-comment{*/
+    /*    display:none;*/
+    /*}*/
+
+    #userinfo{
+        display:flex;
+        justify-content: space-between;
+    }
+</style>
 <body>
 <div class="form-group">
     <label for="username"></label>
@@ -111,6 +173,12 @@
 <div id="comment_list">
     <hr/>
     <ul class="list-group" id="comment-list"></ul>
+
+
+</div>
+<div>
+    <button type="button" class="btn btn-primary" onclick="location.href='/content'">목록으로</button>
+    <button type="button" id="delete-button" class="btn btn-primary" onclick="delete_content()">삭제</button>
 </div>
 
 </body>
