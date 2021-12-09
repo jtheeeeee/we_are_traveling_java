@@ -56,11 +56,6 @@ public class InfoContentService {
         commentRepository.save(comment);
     }
 
-    public void deleteComment(Long id){
-        InfoComment infoComment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
-        commentRepository.delete(infoComment);
-    }
-
 
 
 }
