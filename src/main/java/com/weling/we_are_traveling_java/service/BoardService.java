@@ -43,10 +43,9 @@ public class BoardService {
     }
 
     public Board getBoard(Long id){
-        Board board=boardRepository.findById(id).orElseThrow(
+        return boardRepository.findById(id).orElseThrow(
                 () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
         );
-        return board;
     }
 
     public List<Board> getBoards(String searchTag){
