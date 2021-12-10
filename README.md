@@ -1,15 +1,12 @@
-## 스파르타내일배움캠프 스프링 프로젝트(Weling)
+# 스파르타내일배움캠프 스프링 프로젝트(Weling)
 ![Generic badge](https://img.shields.io/badge/SpringBoot-2.1.0-yellowgreen.svg) ![Generic badge](https://img.shields.io/badge/MySQL-8.0.27-green.svg) ![Generic badge](https://img.shields.io/badge/JPA-2.1-orange.svg) 
 
 ![image](https://user-images.githubusercontent.com/37091602/145514758-97d9fca2-8b8a-4454-b388-4626c63a85e2.png)
 
- 
 <br/>
 
 ### 🔗라이브
 [weling.site](http://weling.site/) 
-
-<br/>
 
 ### ✈️ 소개
 위링(we-ling)은 여행을 기반으로한 정보 공유 및 커뮤니티 기능을 가지고 있습니다.
