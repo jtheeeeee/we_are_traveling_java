@@ -26,15 +26,21 @@ public class InfoContentApiController {
         return infoContentService.getInfoContent(id);
     }
 
-    @GetMapping(value = "/infoContentList")
-    public List<InfoContent> getInfoContents() {
-        return infoContentService.getInfoContents();
+    @PutMapping(value = "/infoContents")
+    public Long updateInfoContent(@RequestParam Long id, InfoContentRequestDto requestDto) throws IOException{
+        return infoContentService.updateInfoContent(id, requestDto);
+
     }
 
     @DeleteMapping(value = "/infoContents")
     public Long deleteInfoContent(@RequestParam Long id) {
         infoContentService.deleteInfoContent(id);
         return id;
+    }
+
+    @GetMapping(value = "/infoContentList")
+    public List<InfoContent> getInfoContents() {
+        return infoContentService.getInfoContents();
     }
 
     @PostMapping("/infoContents/comment")

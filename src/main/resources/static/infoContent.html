@@ -132,6 +132,19 @@
         })
 
     }
+
+    function update_content(){
+        $.ajax({
+            type: "PUT",
+            url: `/infoContents/rewrite?id=${id}`,
+            contentType: 'application/json; charset=utf-8',
+            data: {id:id},
+            success: function (response) {
+                alert("수정되었습니다.");
+                location.reload();
+            }
+        })
+    }
 </script>
 <style>
     #delete-button{
@@ -179,6 +192,7 @@
 <div>
     <button type="button" class="btn btn-primary" onclick="location.href='/content'">목록으로</button>
     <button type="button" id="delete-button" class="btn btn-primary" onclick="delete_content()">삭제</button>
+    <button type="button" id="update-button" class="btn btn-primary" onclick="location.href=`/infoContent/update?id=${idx}`">수정</button>
 </div>
 
 </body>
