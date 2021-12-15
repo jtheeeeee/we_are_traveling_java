@@ -78,6 +78,20 @@ public class InfoContent extends Timestamped{
     @OneToMany(mappedBy="infoContent")
     private List<InfoComment> comments;
 
+    public void update(InfoContentRequestDto requestDto, String url) {
+        this.username = requestDto.getUsername();
+        this.content = requestDto.getContent();
+        this.title = requestDto.getTitle();
+        this.imageUrl = url;
+        this.accommodation = requestDto.getAccommodation();
+        this.transportation = requestDto.getTransportation();
+        this.food = requestDto.getFood();
+        this.shopping = requestDto.getShopping();
+        this.entertainment = requestDto.getEntertainment();
+        this.others = requestDto.getOthers();
+        this.total = requestDto.getTotal();
+    }
+
 
 
 }

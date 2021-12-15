@@ -32,6 +32,23 @@ public class InfoContentService {
         return infoContent;
     }
 
+    @Transactional
+    public Long updateInfoContent(Long id, InfoContentRequestDto requestDto) throws IOException {
+        String url=null;
+
+
+        InfoContent infoContent = infoContentRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+        );
+        if(infoContent.getImageUrl().equals( requestDto.getImageUrl())){
+            url=requestDto.getImageUrl();
+        }else{
+            if(requestDto.getImage() != null) url = s3Uploader.upload(requestDto.getImage(),"data");
+        }
+        infoContent.update(requestDto,url);
+        return infoContent.getId();
+    }
+
     public InfoContent getInfoContent(Long id){
         return infoContentRepository.findById(id).orElseThrow(
                 () -> new NullPointerException("해당 아이디가 존재하지 않습니다." ));
@@ -60,7 +77,5 @@ public class InfoContentService {
         InfoComment infoComment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
         commentRepository.delete(infoComment);
     }
-
-
 
 }
