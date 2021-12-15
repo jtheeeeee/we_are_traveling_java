@@ -13,6 +13,7 @@ public class InfoContentRequestDto {
     private String title;
     private String content;
     private MultipartFile image;
+    private String imageUrl;
     private int accommodation;
     private int transportation;
     private int food;

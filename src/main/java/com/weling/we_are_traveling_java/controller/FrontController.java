@@ -25,6 +25,11 @@ public class FrontController {
         return "infoContent";
     }
 
+    @GetMapping("/infoContent/update")
+    public String update(){
+        return "infoUpdate";
+    }
+
     @GetMapping("/board")
     public String board(){ return "board";
     }

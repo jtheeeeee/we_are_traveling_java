@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+</head>
+<script>
+    let url =  new URL(document.URL);
+    let idx = '';
+    let username =localStorage.getItem("username");
+    let id = url.searchParams.get('id')
+    let src_img=''
+    $(document).ready(function(){
+
+        if (localStorage.getItem("username")) {
+            let username = localStorage.getItem("username");
+            $("#log-in").hide();
+            $("#log-out").show();
+        } else {
+            $("#log-in").show();
+            $("#log-out").hide();
+        }
+
+        makeInfo()
+    })
+    function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        location.href = '/';
+    }
+
+
+    $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+        if (localStorage.getItem('token')) {
+            jqXHR.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
+        }
+    });
+
+    function getParam(name) {
+        var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    function alert_update(){
+        let url =  new URL(document.URL);
+        let id = url.searchParams.get('id')
+        alert(id)
+    }
+
+    function makeInfo(){
+        $.ajax({
+            type: 'GET',
+            url: `/infoContents?id=${id}`,
+            contentType: "application/json",
+            success: function (response) {
+                let username =  response["username"]
+                if (username == localStorage.getItem("username")){
+                    $("#delete-button").show();
+                }
+                let title = response["title"]
+                let content = response["content"]
+                let accommodation = response["accommodation"]
+                let transportation = response["transportation"]
+                let food = response["food"]
+                let entertainment = response["entertainment"]
+                let shopping = response["shopping"]
+                let others = response["others"]
+                let total =  response["total"]
+                src_img=response['imageUrl']
+                $("#username").html(username);
+                $("#preview-image").attr("src",response['imageUrl']);
+                $("#title").attr('value',title);
+                $("#content").html(content)
+                // $("#budget").html(budget)
+                $('#accommodation').attr('value', accommodation);
+                $('#transportation').attr('value', transportation);
+                $('#food').attr('value', food);
+                $('#entertainment').attr('value', entertainment);
+                $('#shopping').attr('value', shopping);
+                $('#others').attr('value', others);
+                $('#total').attr('value', total);
+
+            }
+        })
+    }
+
+    function save(){
+        let username = localStorage.getItem("username");
+        var data = new FormData();
+        data.append( "title", $("#title").val() );
+        data.append( "content", $("#content").val() );
+        data.append( "username", username );
+        // data.append( "image", $("#image")[0].files[0] );
+        if( typeof $("#image")[0].files[0] != 'undefined') data.append( "image", $("#image")[0].files[0] );
+        else if( typeof $("#image")[0].files[0] == 'undefined') data.append("imageUrl", src_img);
+        // data.append("image",src_img);
+        data.append("accommodation", $("#accommodation").val());
+        data.append("transportation",$("#transportation").val());
+        data.append("food",$("#food").val());
+        data.append("entertainment",$("#entertainment").val());
+        data.append("shopping", $("#shopping").val());
+        data.append("others", $("#others").val());
+        data.append("total",$("#total").val());
+        for (let value of data.values()) {
+            console.log(value);
+        }
+        for (let value of data.keys()) {
+            console.log(value);
+        }
+        $.ajax({
+            type: 'PUT',
+            url: `/infoContents?id=${id}`,
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                alert("수정완료" +response);
+                location.href = "/infoContent?id="+response;
+            }
+        })
+    }
+
+</script>
+<style>
+
+    body {
+        font-family: "Space Grotesk", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+    }
+
+    .wrap {
+        padding: 1.5rem;
+    }
+
+    nav {
+        padding: 16px 36px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 6px 16px #f0f3f4;
+    }
+
+    nav container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    nav container ul, nav container .nav_menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        gap: 36px;
+    }
+
+    nav container li a {
+        padding: 8px;
+        letter-spacing: 0.2rem;
+        font-size: 0.9rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #999999;
+        transition: color 150ms ease-out;
+    }
+
+    nav container li a:hover {
+        color: #030303;
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+        line-height: 0.8;
+        letter-spacing: 0.6rem;
+        font-weight: 700;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    .logo-text:after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        background: black;
+        top: calc(100% / 2.7);
+        margin-left: 12px;
+        border-radius: 2px;
+    }
+
+    .nav--button {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 12px 24px;
+        color: white;
+        border: solid black 2px;
+        background: black;
+        transition-property: color, background;
+        transition-duration: 0.15s;
+        transition-timing-function: ease-out;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .nav--button:hover {
+        color: black;
+        background: transparent;
+    }
+
+
+    .hero a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        padding-top: 24px;
+        color: white;
+        height: 100%;
+        width: 5%;
+    }
+
+    .hero a.left {
+        left: 0;
+    }
+
+    .hero a.right {
+        right: 0;
+    }
+
+
+    footer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: absolute;
+        bottom: 24px;
+    }
+
+    .copyright {
+        font-size: 0.7rem;
+        letter-spacing: 0.2rem;
+        color: #999999;
+        text-transform: uppercase;
+    }
+
+    .social_links {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2px;
+        margin-right: 24px;
+    }
+
+    .social_links a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+        background: transparent;
+        transition-property: background, opacity;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-out;
+    }
+
+    .social_links a:hover {
+        background: #fff;
+        color: #999999;
+    }
+
+    #log-out {
+        display: none;
+    }
+
+    #insert_content{
+        width: 55%;
+        height: fit-content;
+        margin:auto;
+        border: gray solid 0.01px;
+        border-radius: 0.01px;
+    }
+    #button {
+        width: 55%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        height: fit-content;
+
+    }
+    #budget{
+        width:20%;
+    }
+    #content{
+        width:100%;
+        height: 6.25em;
+        resize: none;
+    }
+
+    .table_file{border:2px solid black;  width: 30%; height:100%; margin-top: 10px; margin-bottom: 10px; }
+    .table_file_img{width: 100%; height:100%;  }
+    .table_file_input{display: block; margin-bottom: 5px;}
+
+
+</style>
+<body>
+<div class="wrap">
+    <nav>
+        <container>
+            <div class="logo-wrap">
+                <div class="logo-text">WELING</div>
+                <p style="
+                margin-top: 2px;
+                margin-bottom: 2px;
+                "><font size="2">WE ARE TRAVELING</font></p>
+
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/content">Gallery</a></li>
+                    <li><a href="/board">Community</a></li>
+                    <li><a href="https://diagnostic-chevre-17e.notion.site/f2f62d58bb9a4d659c2fc034e5c7a6b8">FAQ</a>
+                    </li>
+
+                </ul>
+
+                <button class="nav--button" id="log-in" onclick="location.href='/user/login'">Log-in</button>
+                <button class="nav--button" id="log-out" onclick="logout()">Log-out</button>
+            </div>
+        </container>
+    </nav>
+</div>
+<div id="insert_form">
+    <div id="insert_content">
+        <hr>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
+            </div>
+
+            <input type="text" id="title" class="form-control" aria-label="Small"
+                   aria-describedby="inputGroup-sizing-sm">
+        </div>
+
+        <hr>
+        <div class="table_file" >
+            <img class="table_file_img" id="preview-image"
+                 src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+        </div>
+        <div id="file"><input class="table_file_input" type="file" id="image" name="image"></div>
+        <hr>
+        <p>Budget</p>
+        <div id="budget">
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">숙박</span>
+                </div>
+                <input type="text" id="accommodation" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">교툥</span>
+                </div>
+                <input type="text" id="transportation" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">식비</span>
+                </div>
+                <input type="text" id="food" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">관광</span>
+                </div>
+                <input type="text" id="entertainment" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">쇼핑</span>
+                </div>
+                <input type="text" id="shopping" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">기타</span>
+                </div>
+                <input type="text" id="others" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">합계</span>
+                </div>
+                <input type="text" id="total" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+        </div>
+        <hr>
+        <p>content</p>
+        <div>
+            <textarea id="content"></textarea>
+        </div>
+
+
+    </div>
+    <div id="button">
+        <button class="nav--button" id="contentSave" onclick="save()">save</button>
+    </div>
+    <footer style="top:1200px;">
+
+        <div class="social_links">
+            <a id="help" href="#">
+                <svg fill="none" class="rubicons brands-facebook" xmlns="http://www.w3.org/2000/svg" width="20"
+                     height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M16 14l1-4h-4V7a1.0002 1.0002 0 011-1h3V2h-3a4.9997 4.9997 0 00-5 5v3.007L6 10v4h3v8h4v-8h3z"
+                          stroke-linejoin="round"></path>
+                </svg>
+            </a>
+            <a id="instagram" href="#">
+                <svg fill="none" class="rubicons brands-instagram" xmlns="http://www.w3.org/2000/svg" width="20"
+                     height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M16 3H8C5.2386 3 3 5.2386 3 8v8c0 2.7614 2.2386 5 5 5h8c2.7614 0 5-2.2386 5-5V8c0-2.7614-2.2386-5-5-5z"
+                          stroke-miterlimit="10"></path>
+                    <path d="M15.375 12c0-1.864-1.511-3.375-3.375-3.375S8.625 10.136 8.625 12s1.511 3.375 3.375 3.375 3.375-1.511 3.375-3.375zM17.375 7.312c0-.3794-.3086-.687-.688-.687a.687.687 0 00-.687.687v.001c0 .3794.3086.687.688.687a.687.687 0 00.687-.687v-.001z"
+                          stroke-miterlimit="10"></path>
+                </svg>
+            </a>
+            <a id="twitter" href="#">
+                <svg fill="none" class="rubicons brands-twitter" xmlns="http://www.w3.org/2000/svg" width="20"
+                     height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M22 4a11.4143 11.4143 0 01-3.072 1.357 3.9488 3.9488 0 00-6.2459.373A3.9483 3.9483 0 0012 8v.881C8 10 5 8 3 5c0 0-3 8 5.475 11.348A11.1144 11.1144 0 012 18c7.932 4.407 17.932.111 17.932-10.025A8.527 8.527 0 0022 4z"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="copyright">
+            <span class="year">2021</span> WELING - All rights reserved.
+        </div>
+
+    </footer>
+</div>
+</div>
+</body>
+<script>
+    function readImage(input) {
+        // 인풋 태그에 파일이 있는 경우
+        if (input.files && input.files[0]) {
+            // 이미지 파일인지 검사 (생략)
+            // FileReader 인스턴스 생성
+            const reader = new FileReader()
+            // 이미지가 로드가 된 경우
+            reader.onload = e => {
+                const previewImage = document.getElementById("preview-image")
+                previewImage.src = e.target.result
+            }
+            // reader가 이미지 읽도록 하기
+            reader.readAsDataURL(input.files[0])
+        }
+    }
+
+    const inputImage = document.getElementById("image")
+    inputImage.addEventListener("change", e => {
+        readImage(e.target)
+    })
+</script>
+
+</html>
