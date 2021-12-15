@@ -1,5 +1,6 @@
 package com.weling.we_are_traveling_java.service;
 
+import com.weling.we_are_traveling_java.domain.Comment;
 import com.weling.we_are_traveling_java.domain.InfoComment;
 import com.weling.we_are_traveling_java.domain.InfoContent;
 import com.weling.we_are_traveling_java.dto.InfoCommentRequestDto;
@@ -73,9 +74,23 @@ public class InfoContentService {
         commentRepository.save(comment);
     }
 
+    public InfoComment getComment(Long id){
+        InfoComment infoComment= commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 대댓글이 없습니다. id=" + id));
+        return infoComment;
+    }
+
     public void deleteComment(Long id){
-        InfoComment infoComment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
+        InfoComment infoComment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 댓글이 없습니다. id=" + id));
         commentRepository.delete(infoComment);
     }
 
+    @Transactional
+    public Long updateComment(Long id, InfoCommentRequestDto requestDto) {
+        InfoContent infoContent = infoContentRepository.findById(requestDto.getId()).orElseThrow(
+                () -> new NullPointerException("해당 인포아이디가 존재하지 않습니다."+requestDto.getId())
+        );
+        InfoComment comment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 댓글이 없습니다. id=" + id));
+        comment.update(requestDto, infoContent);
+        return comment.getId();
+    }
 }

@@ -1,5 +1,6 @@
 package com.weling.we_are_traveling_java.controller;
 
+import com.weling.we_are_traveling_java.domain.InfoComment;
 import com.weling.we_are_traveling_java.domain.InfoContent;
 import com.weling.we_are_traveling_java.dto.InfoCommentRequestDto;
 import com.weling.we_are_traveling_java.dto.InfoContentRequestDto;
@@ -43,13 +44,24 @@ public class InfoContentApiController {
         return infoContentService.getInfoContents();
     }
 
+    @GetMapping(value = "/infoContents/comment")
+    public InfoComment getInfoContentComment(@RequestParam Long id) {
+        return infoContentService.getComment(id);
+    }
+
     @PostMapping("/infoContents/comment")
     public void  setArticleComment(@RequestBody InfoCommentRequestDto commentRequestDto){
         infoContentService.setComment(commentRequestDto);
     }
 
+    @PutMapping(value = "/infoContents/comment")
+    public Long updateInfoContentComment(@RequestParam Long id, @RequestBody InfoCommentRequestDto requestDto) throws IOException{
+        return infoContentService.updateComment(id, requestDto);
+
+    }
+
     @DeleteMapping("/infoContents/comment")
-    public Long  deleteArticleComment(@RequestParam Long id){
+    public Long deleteArticleComment(@RequestParam Long id){
         infoContentService.deleteComment(id);
         return id;
     }
