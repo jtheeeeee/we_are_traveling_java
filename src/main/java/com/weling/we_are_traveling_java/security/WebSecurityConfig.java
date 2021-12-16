@@ -52,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/infoContents/comment").permitAll()
                 .antMatchers("/insert").permitAll()
                 .antMatchers("/insertContents").permitAll()
+                .antMatchers("/maptest").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/docs/**").permitAll()
 
