@@ -39,12 +39,7 @@ public class FrontController {
         return "board_insert";
     }
 
-
-
-
-    
     @GetMapping("/maptest")
     public String maptest(){return "maptest.html";}
 }
-
 
