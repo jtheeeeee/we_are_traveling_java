@@ -104,8 +104,7 @@
                 contentType: false,
                 data: data,
                 success: function (response) {
-                    alert("게시글 저장");
-                    location.replace("/board")
+                    location.href= "/view?idx="+response["idx"];
 
                 }
             })

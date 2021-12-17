@@ -38,9 +38,15 @@ public class FrontController {
     public String board_insert(){
         return "board_insert";
     }
+<<<<<<< Updated upstream
+    
+=======
 
     @GetMapping("/maptest")
     public String maptest(){return "maptest.html";}
-}
 
+    @GetMapping("/view")
+    public String view(){return "view";}
+>>>>>>> Stashed changes
+}
 
