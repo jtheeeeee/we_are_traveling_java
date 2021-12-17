@@ -88,14 +88,16 @@
             return results[1] || 0;
         }
 
-        function getBoard() {
+        function getBoard(idx) {
             $.ajax({
-                type: "POST",
-                url: `/board/${idx}`,
+                type: "GET",
+                url: `/view/${idx}`,
+                contentType: "application/json",
                 success: function (response) {
                     $("#title").html(response['title']);
                     $("#content").html(response['content']);
-                    $("#image").attr("src", response['imageUrl']);
+                    $("#image").attr("src",response['imageUrl']);
+
                     $("#comment-list").empty();
                     for (let i = 0; i < response['comments'].length; i++) {
                         makeListComment(response['comments'][i])

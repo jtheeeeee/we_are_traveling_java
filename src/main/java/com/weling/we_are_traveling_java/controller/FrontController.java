@@ -38,6 +38,11 @@ public class FrontController {
     public String board_insert(){
         return "board_insert";
     }
+
+    @GetMapping("/view")
+    public String view(){
+        return "view";
+    }
 }
 
 

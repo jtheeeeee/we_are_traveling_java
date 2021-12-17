@@ -28,9 +28,9 @@ public class BoardController {
         return boardService.getBoards(searchTag);
     }
 
-    @GetMapping("/board/{id}")
-    public Board getBoard(@PathVariable Long id){
-        return boardService.getBoard(id);
+    @GetMapping("/view/{idx}")
+    public Board getBoard(@PathVariable Long idx){
+        return boardService.getBoard(idx);
     }
 
 
