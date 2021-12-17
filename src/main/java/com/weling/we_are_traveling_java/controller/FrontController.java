@@ -40,6 +40,9 @@ public class FrontController {
     }
 
 
+
+
+    
     @GetMapping("/maptest")
     public String maptest(){return "maptest.html";}
 }
