@@ -42,11 +42,6 @@ public class FrontController {
 
     @GetMapping("/maptest")
     public String maptest(){return "maptest.html";}
-    
-    @GetMapping("/view")
-    public String view(){
-        return "view";
-    }
 }
 
 
