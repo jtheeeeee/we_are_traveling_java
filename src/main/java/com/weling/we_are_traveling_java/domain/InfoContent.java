@@ -26,6 +26,7 @@ public class InfoContent extends Timestamped{
         this.others = infoDto.getOthers();
         this.shopping = infoDto.getShopping();
         this.total = infoDto.getTotal();
+        this.locationKey = infoDto.getLocationKey();
 
 
     }
@@ -42,6 +43,7 @@ public class InfoContent extends Timestamped{
         this.others = infoDto.getOthers();
         this.shopping = infoDto.getShopping();
         this.total = infoDto.getTotal();
+        this.locationKey = infoDto.getLocationKey();
 
 
     }
@@ -75,6 +77,8 @@ public class InfoContent extends Timestamped{
     private int others;
     @Column( nullable = false)
     private int total;
+    @Column( nullable = false)
+    private String locationKey;
     @OneToMany(mappedBy="infoContent")
     private List<InfoComment> comments;
 
@@ -90,6 +94,7 @@ public class InfoContent extends Timestamped{
         this.entertainment = requestDto.getEntertainment();
         this.others = requestDto.getOthers();
         this.total = requestDto.getTotal();
+        this.locationKey = requestDto.getLocationKey();
     }
 
 

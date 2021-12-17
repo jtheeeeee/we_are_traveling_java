@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>키워드로 장소검색하기</title>
+
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services"></script>
+<script>
+    // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+
+    // 장소 검색 객체를 생성합니다
+    // var ps = new kakao.maps.services.Places();
+    //
+    // // 키워드로 장소를 검색합니다
+    // ps.keywordSearch('인천 연수구 송도동 170-1', placesSearchCB);
+    //
+    // // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    // function placesSearchCB (data, status) {
+    //     if (status === kakao.maps.services.Status.OK) {
+    //
+    //
+    //         for (var i=0; i<data.length; i++) {
+    //             console.log(data[i]['place_name']+data[i]['address_name'])
+    //         }
+    //
+    //     }
+    // }
+
+</script>
+<script>
+    function openCloseLogin() {
+        $('#login-id').val('');
+        $('#login-pwd').val('');
+        $('#mapModal').modal('show');
+    }
+
+    function search(){
+        let keyword=$('#keyword').val();
+        apiSearch(keyword)
+        // let temp=`<hr><div>${keyword}</div><button>버튼</button>`
+        // $('#location-list').append(temp)
+
+    }
+
+
+    function apiSearch(keyword){
+        $('#location-list').empty();
+        var ps = new kakao.maps.services.Places();
+
+        // 키워드로 장소를 검색합니다
+        ps.keywordSearch(keyword, placesSearchCB);
+
+        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+        function placesSearchCB (data, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                for (var i=0; i<data.length; i++) {
+                    let temp = `<hr><div>${data[i]['place_name']} , ${data[i]['address_name']}</div><button onclick="setLocation('${data[i]['address_name']}')">버튼</button>`
+                    $('#location-list').append(temp)
+                    console.log(data[i]['place_name']+data[i]['address_name'])
+                }
+
+            }
+        }
+    }
+
+    function setLocation(address){
+        $('#mapModal').modal('hide');
+        $('#location').html(address)
+
+    }
+
+</script>
+<body>
+<div id="map" style="width:100%;height:350px;"></div>
+<button onclick="openCloseLogin()">검색</button>
+<div id = "location"></div>
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">주소 검색</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="keyword" class="col-form-label">키워드</label>
+                    <input type="text" class="form-control" id="keyword">
+                </div>
+                <hr>
+                <div id="location-list">
+                    <div>hi</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="search()">검색하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+</html>

@@ -5,7 +5,16 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services"></script>
 </head>
 <script>
     let url =  new URL(document.URL);
@@ -69,6 +78,7 @@
                 let shopping = response["shopping"]
                 let others = response["others"]
                 let total =  response["total"]
+                let locationkey = response["locationKey"]
                 src_img=response['imageUrl']
                 $("#username").html(username);
                 $("#preview-image").attr("src",response['imageUrl']);
@@ -82,6 +92,7 @@
                 $('#shopping').attr('value', shopping);
                 $('#others').attr('value', others);
                 $('#total').attr('value', total);
+                $('#location').html(locationkey);
 
             }
         })
@@ -104,6 +115,7 @@
         data.append("shopping", $("#shopping").val());
         data.append("others", $("#others").val());
         data.append("total",$("#total").val());
+        data.append("locationKey",$("#location").html());
         for (let value of data.values()) {
             console.log(value);
         }
@@ -121,6 +133,52 @@
                 location.href = "/infoContent?id="+response;
             }
         })
+    }
+    function openCloseSearch(){
+        $('#keyword').val('');
+        $('#location-list').empty();
+        $('#mapModal').modal('show');
+    }
+
+    function search(){
+        let keyword=$('#keyword').val();
+        apiSearch(keyword)
+        // let temp=`<hr><div>${keyword}</div><button>버튼</button>`
+        // $('#location-list').append(temp)
+
+    }
+
+    function apiSearch(keyword){
+        $('#location-list').empty();
+        var ps = new kakao.maps.services.Places();
+
+        // 키워드로 장소를 검색합니다
+        ps.keywordSearch(keyword, placesSearchCB);
+
+        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+        function placesSearchCB (data, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                for (var i=0; i<data.length; i++) {
+                    let temp = `<hr><div>${data[i]['place_name']} , ${data[i]['address_name']}</div><button onclick="setLocation('${data[i]['address_name']}')">버튼</button>`
+                    let temp2= `<div class="input-group mb-3">
+                <div id="location" class="form-control" aria-label="Location" aria-describedby="basic-addon2">${data[i]['place_name']} , ${data[i]['address_name']}</div>
+                <div class="input-group-append">
+
+                    <button class="btn btn-outline-secondary" type="button" onclick="setLocation('${data[i]['place_name']}','${data[i]['address_name']}')">Button</button>
+                </div>
+            </div>`
+
+                    $('#location-list').append(temp2)
+                }
+
+            }
+        }
+    }
+
+    function setLocation(place, address){
+        $('#mapModal').modal('hide');
+        $('#location').html(place+","+address);
+
     }
 
 </script>
@@ -356,6 +414,14 @@
         </div>
         <div id="file"><input class="table_file_input" type="file" id="image" name="image"></div>
         <hr>
+        <p>Location</p>
+        <div class="input-group mb-3">
+            <div type="text" id="location" class="form-control" placeholder="Location" aria-label="Location" aria-describedby="basic-addon2"></div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="openCloseSearch()">Button</button>
+            </div>
+        </div>
+        <hr>
         <p>Budget</p>
         <div id="budget">
             <div class="input-group input-group-sm mb-3">
@@ -448,6 +514,32 @@
 </div>
 </div>
 </body>
+<!--Location Modal-->
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Location Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="keyword" class="col-form-label">Keyword</label>
+                    <input type="text" class="form-control" id="keyword">
+                </div>
+                <hr>
+                <div id="location-list">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="search()">검색하기</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function readImage(input) {
         // 인풋 태그에 파일이 있는 경우
