@@ -21,5 +21,6 @@ public class InfoContentRequestDto {
     private int entertainment;
     private int others;
     private int total;
+    private String locationKey;
 
 }
