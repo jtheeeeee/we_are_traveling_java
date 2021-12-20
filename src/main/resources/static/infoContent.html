@@ -13,6 +13,17 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services"></script>
 <script>
     let url =  new URL(document.URL);
@@ -75,7 +86,8 @@
                 let locationKey =response["locationKey"].split(",")
                 console.log(locationKey)
                 map_set(locationKey)
-
+                data_set=[accommodation,transportation,food,entertainment,shopping,others]
+                chart_a(data_set)
                 let budget = accommodation +"/"+transportation+"/"+food+"/"+entertainment+"/"+shopping+"/"+others+"/"+total
                 $("#username").html(username);
                 $("#image").attr("src",response['imageUrl']);
@@ -220,9 +232,19 @@
 <div class="form-group">
     <label for="budget"></label>
     <div id="budget"></div>
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <hr/>
 <img id="image"/>
+<hr>
 <div>
     <p>Comment</p>
     <textarea class="form-control" id="comment_txt" rows="3"></textarea>
@@ -279,6 +301,19 @@
                 map.setCenter(coords);
             }
         });
+    }
+    function chart_a( data_set){
+        data = {
+            datasets: [{
+                backgroundColor: ["#fb9a99", "#fdbf6f", "#ffeea6", "#b2df8a","#a6cee3", "#CEA3FAFF"],
+                data: data_set
+            }], // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
+            labels: ["숙박","교통","음식","관광","쇼핑","기타"]
+        }; //가운데 구멍이 없는 파이형 차트
+        // 도넛형 차트 var ctx2 = document.getElementById("myChart2");
+        var ctx2 = document.getElementById("myChart2");
+        var myDoughnutChart = new Chart(ctx2, {type: 'doughnut', data: data, options: {}});
+
     }
 </script>
 
