@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<script>
+$(document).ready(function(){
+    let name_list = []
+
+    name_list = ['food', 'accommodation', 'others']
+    let food = 10000;
+    let accommodation = 30000;
+    let entertainment =5000;
+    let transportation = 40000;
+    let shopping = 50000;
+    let others = 3800;
+    data_set=[accommodation,transportation,food,entertainment,shopping,others]
+    chart_a(data_set)
+
+})
+
+</script>
+
+
+<body>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+    function chart_a(name_list, data_set){
+        data = {
+            datasets: [{
+                backgroundColor: ["#fb9a99", "#fdbf6f", "#ffeea6", "#b2df8a","#a6cee3", "#CEA3FAFF"],
+                data: data_set
+            }], // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
+            labels: ["accommodation","transportation","food","entertainment","shopping","others"]
+        }; //가운데 구멍이 없는 파이형 차트
+        // 도넛형 차트 var ctx2 = document.getElementById("myChart2");
+        var ctx2 = document.getElementById("myChart2");
+        var myDoughnutChart = new Chart(ctx2, {type: 'doughnut', data: data, options: {}});
+
+    }
+
+</script>
+</html>
