@@ -12,6 +12,9 @@
           crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
@@ -24,7 +27,7 @@
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7d3a6ab8b61072dd15869ec3de1ff1f7&libraries=services"></script>
 <script>
     let url =  new URL(document.URL);
     let idx = '';
@@ -36,8 +39,23 @@
         idx = getParam('id');
         $("#save-comment").show();
         $("#update-comment").hide();
-
+        showLike();
     })
+    function showLike(){
+        alert('show')
+        $.ajax({
+            type: "GET",
+            url: `/likes/${id}`,
+            success: function (response) {
+                alert(response)
+            }
+        })
+    }
+
+    // function makeLikes(likeInfo){
+    //     temp=``
+    //     $('#like').append()
+    // }
 
     function getParam(name) {
         var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
@@ -245,6 +263,13 @@
 <hr/>
 <img id="image"/>
 <hr>
+<div id = "like">
+
+</div>
+<span id="like-icon-modal-1" onclick="toggleLike(${likeInfo.articleId})"><i class="fas fa-heart" style="color: red"></i> 좋아요 : ${num2str(likeInfo.likeCount)}</span>
+<span id="like-icon-modal-2" onclick="toggleLike(${likeInfo.articleId})"><i class="far fa-heart" style="color: red"></i> 좋아요 : ${num2str(likeInfo.likeCount)}</span>
+<hr>
+
 <div>
     <p>Comment</p>
     <textarea class="form-control" id="comment_txt" rows="3"></textarea>
