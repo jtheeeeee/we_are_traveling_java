@@ -55,10 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/insert").permitAll()
                 .antMatchers("/insertContents").permitAll()
                 .antMatchers("/maptest").permitAll()
+                .antMatchers("/likes/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/docs/**").permitAll()
-
-
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
