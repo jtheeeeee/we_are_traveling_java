@@ -13,6 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "https://www.weling.site")
 public class InfoContentApiController {
 
     private final InfoContentService infoContentService;
