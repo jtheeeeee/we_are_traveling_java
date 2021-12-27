@@ -11,4 +11,5 @@ public class BoardRequestDto {
     private String content;
     private String tags;
     private MultipartFile image;
+    private String imageUrl;
 }

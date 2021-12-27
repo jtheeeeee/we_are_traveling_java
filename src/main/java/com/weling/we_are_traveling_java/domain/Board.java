@@ -46,4 +46,9 @@ public class Board extends Timestamped {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
     }
+    public void update(BoardRequestDto requestDto, String url) {
+        this.content = requestDto.getContent();
+        this.title = requestDto.getTitle();
+        this.imageUrl = url;
+    }
 }

@@ -4,8 +4,10 @@ package com.weling.we_are_traveling_java.controller;
 import com.weling.we_are_traveling_java.domain.Board;
 import com.weling.we_are_traveling_java.dto.BoardCommentRequestDto;
 import com.weling.we_are_traveling_java.dto.BoardRequestDto;
+import com.weling.we_are_traveling_java.dto.InfoContentRequestDto;
 import com.weling.we_are_traveling_java.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -37,5 +39,16 @@ public class BoardController {
     @PostMapping("/board/comment")
     public void setBoardComment(@RequestBody BoardCommentRequestDto boardCommentRequestDto){
         boardService.setBoardComment(boardCommentRequestDto);
+    }
+
+    @PutMapping(value = "/board/update/{idx}")
+    public Long updateBoard(@RequestParam Long idx, BoardRequestDto requestDto) throws IOException{
+        return boardService.updateBoard(idx, requestDto);
+    }
+
+    @DeleteMapping(value = "/board")
+    public Long deleteBoard(@RequestParam Long idx) {
+        boardService.deleteBoard(idx);
+        return idx;
     }
 }

@@ -1,7 +1,7 @@
-<!Doctype html>
-<html lang="ko" xmlns="http://www.w3.org/1999/html">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,23 +23,30 @@
 
     <!-- 구글폰트 -->
 
-    <title>자유 게시판</title>
+    <!-- 태그 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <script src="js/bootstrap-tagsinput.js"></script>
 
-    <!-- style -->
+    <title>글 수정하기</title>
     <style type="text/css">
         * {
             font-family: "Stylish", sans-serif;
-        }
-
-        .comment {
-            color: blue;
-            font-weight: bold;
         }
 
         .wrap {
             width: 800px;
             margin: auto;
         }
+
+        .tagbox {
+            width: 500px;
+        }
+
+        .save_btn {
+            text-align: center;
+        }
+
         .button {
             position: relative;
             border-radius: 3px;
@@ -57,6 +64,7 @@
             overflow: hidden;
             cursor: pointer;
         }
+
         .button:after {
             content: "";
             background: #f1f1f1;
@@ -69,6 +77,7 @@
             opacity: 0;
             transition: all 1s
         }
+
         .button:active:after {
             padding: 0;
             margin: 0;
@@ -77,7 +86,11 @@
         }
     </style>
     <script>
+        let url =  new URL(document.URL);
         let idx = '';
+        let username =localStorage.getItem("username");
+        let id = url.searchParams.get('id')
+        let src_img=''
         $(document).ready(function () {
             idx = getParam('idx');
             getBoard(idx);
@@ -94,8 +107,12 @@
                 url: `/view/${idx}`,
                 contentType: "application/json",
                 success: function (response) {
-                    $("#title").html(response['title']);
-                    $("#content").html(response['content']);
+                    let title = response["title"]
+                    let content = response["content"]
+                    src_img=response['imageUrl']
+
+                    $("#title").attr('value',title);
+                    $("#content").html(content);
                     $("#image").attr("src",response['imageUrl']);
 
                     $("#comment-list").empty();
@@ -105,77 +122,53 @@
                 }
             })
         }
+        function postingBoard() {
+            var data = new FormData();
+            data.append("title", $("#title").val());
+            data.append("content", $("#content").val());
+            data.append("tags", $("#tags").val());
+            data.append("image", $("#image")[0].files[0]);
+            if( typeof $("#image")[0].files[0] != 'undefined') data.append( "image", $("#image")[0].files[0] );
 
-        function setBoardComment() {
-            let comment = {
-                "idx": idx,
-                "comment": $("#comment").val()
-            }
             $.ajax({
                 type: "POST",
-                url: `/board/comment`,
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(comment),
+                url: '/board',
+                processData: false,
+                contentType: false,
+                data: data,
                 success: function (response) {
-                    alert("댓글이 작성되었습니다!!");
-                    getBoard();
-                }
-            })
-        }
+                    location.href= "/view?idx="+response["idx"];
 
-        function makeListComment(comment) {
-            let tempHtml = `<li class="list-group-item">${comment['comment']}</li>`;
-            $("#comment-list").append(tempHtml);
-        }
-
-        function delete_board(){
-            $.ajax({
-                type: "DELETE",
-                url: `/board?idx=${idx}`,
-                contentType: 'application/json; charset=utf-8',
-                data: {idx:idx},
-                success: function (response) {
-                    alert("삭제되었습니다.");
-                    window.location = "/board";
                 }
             })
         }
     </script>
-
 </head>
-
 <body>
 <div class="wrap">
-    <div class="form-group">
-        <label for="title"><h4><u>Title</u></h4></label>
-        <div id="title"></div>
-        <br>
-        <hr>
-    </div>
-    <div class="form-group">
-        <label for="content"><h4><u>Content</u></h4></label>
-        <div id="content"></div>
-        <br>
-        <hr>
-    </div>
-    <div class="form-group">
-        <div>
-            <img id="image"/>
+
+    <h2>글 수정하기</h2>
+    <hr class="my-4">
+    <div>
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input id="title" class="form-control">
+        </div>
+        <div class="form-group" width="20px">
+            <label for="content">내용</label>
+            <textarea id="content" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tags">태그</label><br>
+            <input type="text" value="" id="tags" data-role="tagsinput" class="tagbox"/>
+            <p style="font-size:13px; color: dimgrey">(구인 시, "구인" 태그와 "여행 지역" 태그 필수!)</p>
+        </div>
+        <input type="file" id="image" name="image">
+        <div class="form-group save_btn"><br><br>
+            <button type="button" class="button" style="background-color:#333333 " onclick="postingBoard()">Save
+            </button>
         </div>
     </div>
-    <br>
-
-    <hr/>
-    <p>comment</p>
-    <textarea class="form-control" id="comment" rows="3"></textarea>
-    <br>
-    <div style="width: 45%; float: right">
-        <button type="button" class="btn btn-primary button" style="background-color: #333333; color: white; width:100px;" onclick="setBoardComment()">댓글 작성</button>
-        <button type="button" class="btn btn-primary button" style="background-color: #333333; color: white; width:100px;" onclick="location.href=`/board/update?idx=${idx}`">수정하기</button>
-        <button type="button" class="btn btn-primary button" style="background-color: #333333; color: white; width:100px;" onclick="delete_board()">삭제하기</button>
-    </div>
-    <ul class="list-group" id="comment-list">
-    </ul>
 </div>
 </body>
 </html>
