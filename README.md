@@ -40,4 +40,4 @@ We are traveling의 약자이며 여행자들을 대상으로 서비스를 제�
 
 ### 📌 주요 기능 [ - 상세보기](https://github.com/jtheeeeee/we_are_traveling_java/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
 
-### 📌 트러블 슈팅 [ - 상세보기]
+### 📌 트러블 슈팅 [ - 상세보기](https://github.com/jtheeeeee/we_are_traveling_java/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85)
