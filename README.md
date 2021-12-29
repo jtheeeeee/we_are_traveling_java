@@ -33,6 +33,7 @@ We are traveling의 약자이며 여행자들을 대상으로 서비스를 제�
 - 우성호  
 
 <br/>
+### 📌 각 팀원 별 담당 소개 [ - 상세보기](https://github.com/jtheeeeee/we_are_traveling_java/wiki/%EA%B0%81-%ED%8C%80%EC%9B%90%EB%B3%84-%EB%8B%B4%EB%8B%B9-%EC%86%8C%EA%B0%9C)
 
 ### 📌 SA [ - 상세보기](https://github.com/jtheeeeee/we_are_traveling_java/wiki/SA)
 
